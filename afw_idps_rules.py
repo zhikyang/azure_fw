@@ -26,7 +26,7 @@ rgname="FwSandbox"
 policy="FwPolicy1"
 apiversion="2023-02-01"
 
-filename="idps_rules_list_3.json"
+filename="idps_rules_list.json"
 url = "https://management.azure.com/subscriptions/"+subid+"/resourceGroups/"+rgname+"/providers/Microsoft.Network/firewallPolicies/"+policy+"/listIdpsSignatures?api-version="+apiversion
 headers = {
   'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ headers = {
 payload = json.dumps({
   "search": "",
   "orderBy": {
-    "field": "severity",
+    "field": "lastUpdated",
     "order": "Descending"
   },
   "resultsPerPage": 1000,
@@ -61,8 +61,8 @@ while i < counter:
   payload = json.dumps({
     "search": "",
     "orderBy": {
-      "field": "severity",
-      "order": "Ascending"
+      "field": "lastUpdated",
+      "order": "Descending"
     },
     "resultsPerPage": 1000,
     "skip": (i*1000)
